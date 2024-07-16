@@ -18,16 +18,32 @@ class SuttaDetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'History:',
+                'ရွတ်ဖတ်နည်း',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              ...sutta.history.map((his) => Text(his)).toList(),
               const SizedBox(height: 16),
+              ...sutta.history.map((his) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 3.0),
+                    child: Text(
+                      his,
+                      style: const TextStyle(
+                          color: Colors.blue, fontWeight: FontWeight.bold),
+                    ),
+                  )),
+              const SizedBox(height: 32),
               const Text(
-                'Method:',
+                'သုတ္တန် ပါဠိတော်',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Text(sutta.method),
+              const SizedBox(height: 16),
+              ...sutta.method.map((me) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6.0),
+                  child: Text(
+                    me,
+                    textAlign: TextAlign.justify,
+                    style: const TextStyle(fontSize: 18),
+                  ))),
+              // Text(sutta.method),
             ],
           ),
         ),

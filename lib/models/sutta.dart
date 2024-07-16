@@ -2,7 +2,7 @@ class Sutta {
   final int id;
   final String name;
   final List<String> history;
-  final String method;
+  final List<String> method;
 
   Sutta(
       {required this.id,
