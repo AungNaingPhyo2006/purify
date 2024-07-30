@@ -7,6 +7,11 @@ class SuttaDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Color> colors = [
+      Colors.black,
+      Colors.blue,
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text(sutta.name),
@@ -36,13 +41,28 @@ class SuttaDetailScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
-              ...sutta.method.map((me) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6.0),
+              ...sutta.method.asMap().entries.map((entry) {
+                int index = entry.key;
+                String methodText = entry.value;
+
+                // Use the index to get the color
+                Color textColor = colors[index % colors.length];
+
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 9.0),
                   child: Text(
-                    me,
+                    methodText,
                     textAlign: TextAlign.justify,
-                    style: const TextStyle(fontSize: 18),
-                  ))),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: textColor,
+                      fontWeight: textColor == Colors.blue
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                    ),
+                  ),
+                );
+              }),
               // Text(sutta.method),
             ],
           ),
