@@ -5,6 +5,8 @@ import 'package:purify/pages/main_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    debugPrint('Navigating to: ${settings.name}');
+
     // Getting arguments passed in while calling Navigator.pushNamed
     final args = settings.arguments;
 
